@@ -1,12 +1,39 @@
-# React + Vite
+# Notepad App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and static web-based Notepad application to create and organize personal notes.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application was built using **React** and offers a minimal and intuitive user experience for writing notes.  
+Currently, it includes a basic **Navbar** and **Footer** — more features will be added soon.
 
-## Expanding the ESLint configuration
+Planned features:
+- Create new notes
+- View and manage notes
+- Edit and delete notes
+- Save notes to local storage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Screenshot
+
+Coming soon – a screenshot will be added as the main features are developed.
+
+## Demo
+
+Demo not available yet – deployment will be added once the core functionality is complete.
+
+## Technologies Used
+
+**Frontend:**
+
+- [React](https://react.dev/): A JavaScript library for building user interfaces.
+- [Vite](https://vitejs.dev/): A fast build tool for modern web development.
+- [Tailwind CSS](https://tailwindcss.com/docs/guides/vite): A utility-first CSS framework.
+
+## Installation
+
+Installation instructions will be added later.  
+The project is still under development.
+
+## Author
+
+:v: [@marilynsaravia](https://github.com/marilynsaravia)
