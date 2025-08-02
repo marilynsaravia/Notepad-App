@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+/* Tailwind CSS v4 syntax: Custom theme variables below. Documentation : https://tailwindcss.com/docs/theme */
+
+@theme {
+   
+    /*  Custom colors  
+     Example:
+     notepink: #fde2e4;
+     noteyellow: #fff7ae;
+     ...
+    */
+ 
+}
