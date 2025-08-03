@@ -1,6 +1,5 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+
 
 
 /* Tailwind CSS v4 syntax: Custom theme variables below. Documentation : https://tailwindcss.com/docs/theme */
