@@ -1,9 +1,9 @@
 [
   {
-    "Id": 1,
-    "Title": "📝 Welcome to Notepad App!",
-    "Description": "Start by clicking the '+' button to add a new note.",
-    "Category": "Work"
+    "id": 0,
+    "title": "📝 Welcome to Notepad App!",
+    "description": "Start by clicking the '+' button to add a new note.",
+    "category": "College",
+    "color":"green-300"
   }
-  
 ]
