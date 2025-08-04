@@ -4,7 +4,6 @@ import { FiMoon, FiSun, FiSearch } from "react-icons/fi";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-
     // Read dark mode setting from localStorage (if it exists)
     return localStorage.getItem("theme") === "dark";
   });
@@ -23,15 +22,15 @@ const Navbar = () => {
   const handleToggle = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <div className="w-full h-[130px] flex justify-between items-center px-12">
+    <div className="w-full h-auto py-4 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
       <img
-        className="w-[150px]"
+        className="w-[120px] md:w-[150px]"
         src={getImageNavbar("logo.png")}
         alt="Notepad App Logo"
       />
 
       {/* Search bar */}
-      <div className="relative w-[700px]">
+      <div className="relative w-full md:w-[700px]">
         <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
           <FiSearch />
         </span>
