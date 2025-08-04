@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@custom-variant dark (&:where(.dark, .dark *));
 
 
 /* Tailwind CSS v4 syntax: Custom theme variables below. Documentation : https://tailwindcss.com/docs/theme */
