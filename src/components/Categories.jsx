@@ -23,19 +23,19 @@ const Categories = () => {
   const uniqueCategories = Object.keys(categoryColors);
 
   return (
-    <div className='w-full h-[100px] flex gap-2 justify-center items-center px-12'>
+    <div className="w-full min-h-[60px] flex flex-wrap gap-2 justify-center items-center px-2 sm:px-4 md:px-12 py-2">
       {uniqueCategories.length > 0 && uniqueCategories.map((category, index) => (
         <div
           key={index}
-          className="w-auto h-[30px] flex justify-start items-center bg-white dark:bg-gray-700 dark:text-gray-300 rounded-sm"
+          className="flex items-center bg-white dark:bg-gray-700 dark:text-gray-300 rounded-sm"
         >
           <div
-            className={`${colorClasses[categoryColors[category]] || colorClasses["gray-200"]} w-8 h-full flex items-center justify-center rounded-bl-sm rounded-tl-sm text-2xl font-mono dark:text-gray-700`}
+            className={`${colorClasses[categoryColors[category]] || "bg-gray-200"} w-8 h-full flex items-center justify-center rounded-bl-sm rounded-tl-sm text-2xl font-mono dark:text-gray-700`}
           >
             #
           </div>
-          <div className="w-auto">
-            <p className="text-left px-2 text-base capitalize">{category}</p>
+          <div className="px-2">
+            <p className="text-base capitalize whitespace-nowrap">{category}</p>
           </div>
         </div>
       ))}
