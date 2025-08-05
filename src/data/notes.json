@@ -2,8 +2,43 @@
   {
     "id": 0,
     "title": "📝 Welcome to Notepad App!",
-    "description": "Start by clicking the '+' button to add a new note.",
+    "description": "This is your personal space to store quick notes. Click the '+' card to create your first note. You can edit, delete, or search them anytime.",
+    "category": "General",
+    "color": "green"
+  },
+  {
+    "id": 1,
+    "title": "🏋️ Gym Workout Plan",
+    "description": "Monday: Chest & Triceps\nWednesday: Back & Biceps\nFriday: Legs & Abs",
+    "category": "Fitness",
+    "color": "blue"
+  },
+  {
+    "id": 2,
+    "title": "🛒 Shopping List",
+    "description": "Milk, Bread, Eggs, Chicken, Rice, Coffee, Vegetables, Fruits",
+    "category": "Groceries",
+    "color": "yellow"
+  },
+  {
+    "id": 3,
+    "title": "📚 College Assignments",
+    "description": "Finish the web development project for Friday.\nPrepare presentation for History class.",
     "category": "College",
-    "color":"green-300"
+    "color": "violet"
+  },
+  {
+    "id": 4,
+    "title": "💰 Bills to Pay",
+    "description": "Electricity: $45 - due 10th\nInternet: $30 - due 15th\nWater: $25 - due 20th",
+    "category": "Finance",
+    "color": "rose"
+  },
+  {
+    "id": 5,
+    "title": "💡 Project Ideas",
+    "description": "1. Habit Tracker App\n2. Recipe Sharing Website\n3. Personal Budget Planner",
+    "category": "Work",
+    "color": "fuchsia"
   }
 ]

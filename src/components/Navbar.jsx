@@ -37,7 +37,8 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search for title"
-          className="w-full pl-10 pr-5 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-violet-400"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full pl-10 pr-5 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-full text-base focus:outline-none focus:ring-1 focus:ring-violet-400"
         />
       </div>
 

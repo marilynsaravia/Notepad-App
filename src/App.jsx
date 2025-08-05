@@ -1,17 +1,21 @@
-import Navbar from './components/Navbar'
-import Categories from './components/Categories'
-import Notes from './components/Notes'
-import Footer from './components/Footer'
+import { useState } from "react";
+import Navbar from './components/Navbar';
+import Categories from './components/Categories';
+import Notes from './components/Notes';
+import Footer from './components/Footer';
 
 function App() {
+
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-50 dark:bg-gray-800 font-sans"> 
       <Navbar />
       <Categories />
-      <Notes />
+      <Notes searchTerm={searchTerm}/>
       <Footer />
     </div>
   );
 }
 
-export default App
+export default App;
