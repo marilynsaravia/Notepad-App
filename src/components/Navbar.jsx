@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { getImageNavbar } from "../utils";
 import { FiMoon, FiSun, FiSearch } from "react-icons/fi";
 
-const Navbar = () => {
+const Navbar = ({ searchTerm, setSearchTerm }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Read dark mode setting from localStorage (if it exists)
     return localStorage.getItem("theme") === "dark";
   });
 
@@ -22,21 +21,22 @@ const Navbar = () => {
   const handleToggle = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <div className="w-full h-auto py-4 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div className="w-full h-[130px] flex justify-between items-center px-4 md:px-12">
       <img
-        className="w-[120px] md:w-[150px]"
+        className="w-[100px] md:w-[150px]"
         src={getImageNavbar(isDarkMode ? "dark-logo.png" : "logo.png")}
         alt="Notepad App Logo"
       />
 
       {/* Search bar */}
-      <div className="relative w-full md:w-[700px]">
+      <div className="relative w-full md:w-[700px] mx-4">
         <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
           <FiSearch />
         </span>
         <input
           type="text"
           placeholder="Search for title"
+          value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full pl-10 pr-5 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-full text-base focus:outline-none focus:ring-1 focus:ring-violet-400"
         />
