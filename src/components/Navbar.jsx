@@ -25,7 +25,7 @@ const Navbar = () => {
     <div className="w-full h-auto py-4 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
       <img
         className="w-[120px] md:w-[150px]"
-        src={getImageNavbar("logo.png")}
+        src={getImageNavbar(isDarkMode ? "dark-logo.png" : "logo.png")}
         alt="Notepad App Logo"
       />
 
