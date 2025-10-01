@@ -1,23 +1,19 @@
-import { useState } from 'react';
-import Navbar from './components/Navbar';
-import Categories from './components/Categories';
-import Notes from './components/Notes/Notes';
-import Footer from './components/Footer';
+// src/App.jsx
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Notes from "./components/Notes/Notes";
+import Footer from "./components/Footer";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterCategory, setFilterCategory] = useState(null);
-
-  const handleCategorySelect = (category) => {
-    // Si se selecciona de nuevo la misma categoría, se desactiva
-    setFilterCategory(prev => (prev === category ? null : category));
-  };
 
   return (
-    <div className='bg-gray-50 dark:bg-gray-800 min-h-screen flex flex-col p-3 font-sans'>
+    <div className="bg-gray-50 dark:bg-gray-800 min-h-screen flex flex-col p-3 font-sans">
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <Categories selectedCategory={filterCategory} onCategorySelect={handleCategorySelect} />
-      <Notes searchTerm={searchTerm} selectedCategory={filterCategory} />
+
+      {/* Notes now contains the categories bar inside */}
+      <Notes searchTerm={searchTerm} />
+
       <div className="mt-auto">
         <Footer />
       </div>
