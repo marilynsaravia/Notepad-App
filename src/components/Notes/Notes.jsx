@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import notesData from "../../data/notes.json";
 import AddNote from "./AddNote";
+import NoteForm from "./NoteForm"; // 👈 lo usamos para editar
 
 // Normalize strings to avoid duplicates like "Work" vs "work"
 const normalize = (s = "") => s.trim().toLowerCase();
@@ -19,6 +20,11 @@ const Notes = ({ searchTerm = "" }) => {
 
   // Local selected category state (self-contained)
   const [activeCategory, setActiveCategory] = useState("All");
+
+  // 🔽 id de la nota cuyo menú está abierto
+  const [menuOpenId, setMenuOpenId] = useState(null);
+  // 🔽 id de la nota que estamos editando
+  const [editingId, setEditingId] = useState(null);
 
   // Persist notes to localStorage
   useEffect(() => {
@@ -57,7 +63,7 @@ const Notes = ({ searchTerm = "" }) => {
       const k = normalize(n.category);
       if (!k) continue;
       const cls = colorClasses[n.color]; // translate note.color -> Tailwind class
-      if (cls && !acc[k]) acc[k] = cls;   // keep the first one found
+      if (cls && !acc[k]) acc[k] = cls; // keep the first one found
     }
     return acc;
   }, [notes]);
@@ -86,9 +92,26 @@ const Notes = ({ searchTerm = "" }) => {
         newNote?.content?.trim() ||
         "",
       category: newNote?.category?.trim() || "",
-      color: newNote?.color || "gray", // cards still use note.color
+      color: newNote?.color || "violet",
     };
     setNotes((prev) => [...prev, cleaned]);
+  };
+
+  // ✏️ editar nota
+  const handleUpdateNote = (id, updatedData) => {
+    setNotes((prev) =>
+      prev.map((note) =>
+        note.id === id ? { ...note, ...updatedData } : note
+      )
+    );
+    setEditingId(null);
+  };
+
+  // 🗑 borrar nota
+  const handleDeleteNote = (id) => {
+    setNotes((prev) => prev.filter((note) => note.id !== id));
+    if (editingId === id) setEditingId(null);
+    if (menuOpenId === id) setMenuOpenId(null);
   };
 
   return (
@@ -98,7 +121,7 @@ const Notes = ({ searchTerm = "" }) => {
         {categories.map((cat) => {
           const key = normalize(cat);
           const bgClass =
-            key === "All"
+            key === "all"
               ? "bg-gray-200"
               : categoryBgByCat[key] || "bg-violet-400";
 
@@ -107,7 +130,11 @@ const Notes = ({ searchTerm = "" }) => {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`bg-white dark:bg-gray-700 inline-flex items-center gap-2 h-[30px] pl-0 pr-2 rounded-sm transition cursor-pointer
-                ${activeCategory === cat ? "ring-1 ring-violet-400 shadow-md" : ""}`}
+                ${
+                  activeCategory === cat
+                    ? "ring-1 ring-violet-400 shadow-md"
+                    : ""
+                }`}
               aria-pressed={activeCategory === cat}
             >
               <div
@@ -129,26 +156,74 @@ const Notes = ({ searchTerm = "" }) => {
         <AddNote onAdd={handleAddNote} />
 
         {/* Render filtered notes */}
-        {filteredNotes.map((note) => (
-          <div
-            key={note.id}
-            className={`${
-              colorClasses[note.color] || "bg-gray-200"
-            } rounded-2xl shadow-sm p-6 flex flex-col justify-between h-[300px]`}
-          >
-            <div>
-              <h2 className="text-3xl font-semibold">{note.title}</h2>
-              <p className="mt-4 text-base whitespace-pre-line">
-                {note.description}
-              </p>
-              {note.category && (
-                <p className="mt-4 text-sm whitespace-pre-line">
-                  #{note.category}
-                </p>
+        {filteredNotes.map((note) => {
+          const isEditing = editingId === note.id;
+          const isMenuOpen = menuOpenId === note.id;
+
+          return (
+            <div
+              key={note.id}
+              className={`${
+                colorClasses[note.color] || "bg-gray-200"
+              } relative rounded-2xl shadow-sm p-6 flex flex-col justify-between h-[300px]`}
+            >
+              {/* 3 puntitos (solo cuando no estamos editando) */}
+              {!isEditing && (
+                <button
+                  className="absolute top-3 right-5 text-gray-700 dark:text-gray-900 text-xl hover:text-black"
+                  onClick={() =>
+                    setMenuOpenId(isMenuOpen ? null : note.id)
+                  }
+                >
+                  ⋮
+                </button>
+              )}
+
+              {/* Menú Edit / Delete */}
+              {isMenuOpen && (
+                <div className="absolute top-8 right-3 bg-white rounded-lg shadow-lg text-sm overflow-hidden z-20">
+                  <button
+                    className="w-full px-4 py-2 text-left hover:bg-gray-100"
+                    onClick={() => {
+                      setEditingId(note.id);
+                      setMenuOpenId(null);
+                    }}
+                  >
+                    ✏️ Edit
+                  </button>
+                  <button
+                    className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50"
+                    onClick={() => handleDeleteNote(note.id)}
+                  >
+                    🗑️ Delete
+                  </button>
+                </div>
+              )}
+
+              {/* Contenido: form si editando, texto si no */}
+              {isEditing ? (
+                <NoteForm
+                  initialData={note}
+                  submitLabel="Save"
+                  onSubmit={(values) => handleUpdateNote(note.id, values)}
+                  onCancel={() => setEditingId(null)} // opcional, solo si tu NoteForm lo soporta
+                />
+              ) : (
+                <div>
+                  <h2 className="text-3xl font-semibold">{note.title}</h2>
+                  <p className="mt-4 text-base whitespace-pre-line">
+                    {note.description}
+                  </p>
+                  {note.category && (
+                    <p className="mt-4 text-sm whitespace-pre-line">
+                      #{note.category}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
