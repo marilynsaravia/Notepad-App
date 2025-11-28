@@ -41,10 +41,28 @@ This iteration introduced elements aimed at functionality:
 - **Edit** and **Delete** buttons to manage notes.
 - Design improvements for better readability.
 
+### **Step 3 — Switching to a Modern 3-Dot Contextual Menu**
+
+<img width="737" height="357" alt="image" src="https://github.com/user-attachments/assets/0bc16cd9-7508-4b25-833c-41db26102ef0" />
+
+
+In this stage, the app moved to a more modern and familiar UX pattern by introducing a 3-dot (⋮) contextual menu on each note card — similar to interfaces used by Google Keep, X, Instagram, and other major apps.
+
+This update provides:
+- A cleaner and more minimal UI, removing visible Edit/Delete buttons.
+- A contextual menu that appears only when needed.
+- Direct access to:
+  - ✏️ Edit note (inline, inside the card)
+  - 🗑️ Delete note
+- Better usability on both desktop and mobile.
+- A scalable structure for future actions like Duplicate, Pin, or Change Color.
+
+This redesign significantly improves the user experience by keeping the interface uncluttered while maintaining quick access to essential actions.
 
 ## Screenshot
 
-Coming soon – a screenshot will be added once the application is fully completed.
+![Pink 3D Mockups Sales Pitch Sales Presentation](https://github.com/user-attachments/assets/e47491ab-fdd9-4610-a02a-e83ef9fa8a91)
+
 
 ## Demo
 
